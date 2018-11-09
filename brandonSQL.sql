@@ -51,3 +51,59 @@ INSERT INTO Answer1 (questionID, answer, correct)
 VALUES ('15', 'True', 'n');
 
 /* Chapter 3 */
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('16', 'Concurrent process flow', 'n');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('17', 'True', 'n');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('18', 'True', 'n');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('19', 'True', 'y');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('20', 'SEI', 'n');
+
+/* Chapter 4 */
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('21', 'A reasonable approach when requirements are well defined', 'y');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('22', 'A reasonable approach when requirements are well defined', 'n');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('23', 'Are iterative in nature', 'n');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('24', '', '');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('', '', '');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('', '', '');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('', '', '');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('', '', '');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('', '', '');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('', '', '');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('', '', '');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('', '', '');
+
+INSERT INTO Answer1 (questionID, answer, correct)
+VALUES ('o', '', '');
