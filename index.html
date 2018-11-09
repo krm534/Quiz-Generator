@@ -15,3 +15,47 @@
 <script src="js/scripts.js"></script>
 </body>
 </html> 
+<!doctype html>
+<html lang="en">
+  <head>
+  
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	
+		<!-- Bootstrap external CSS -->
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			function addChapter()
+			{
+				var chapterNumber = document.getElementById("chapterList").value;
+	        	$("p").append("<br> Chapter " + chapterNumber + " selected.");
+			};
+		</script>
+		<title>Quiz Generation</title>
+	</head>
+	<body>
+		<div class="container">
+		
+  			<h2>Quiz Generation</h2>
+  			<p>Select which chapters you would like to take a quiz on. Press the submit button when ready.</p>
+  			
+  			<form>
+  				<label>Number of questions from Chapter 1: </label>
+      			<select name="chapterList" id="chapterList" onChange="addChapter()">
+        			<option value="1">1</option>
+       				<option value="2">2</option>
+        			<option value="3">3</option>
+        			<option value="4">4</option>
+        			<option value="5">5</option>
+        			<option value="6">6</option>
+        			<option value="7">7</option>
+        			<option value="8">8</option>
+        			<option value="9">9</option>
+        			<option value="10">10</option>
+      			</select>
+      		</form>
+  		</div>
+ 	</body>
+ </html>
