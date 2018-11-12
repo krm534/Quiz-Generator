@@ -1,5 +1,4 @@
-/* Brandon has answer table 1 and 2*/
-/* Correct is either a y or an n */
+/* ANSWER 1 BEGIN */
 
 /* Chapter 1 */
 
@@ -343,3 +342,348 @@ VALUES ('106', 'True', 'n');
 
 INSERT INTO Answer1 (questionID, answer, correct)
 VALUES ('107', 'True', 'y');
+
+/* ANSWER 2 BEGIN */
+4
+/* Chapter 1 */
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('1', 'Why does software take a long time to finish?', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('2', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('3', 'Defects are more likely to arise after software has been used often', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('4', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('5', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('6', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('7', 'False', 'n');
+
+/* Chapter 2 */
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('8', 'Manufacturing', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('9', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('10', 'communication, risk management, measurement, production, reviewing', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('11', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('12', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('13', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('14', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('15', 'False', 'y');
+
+/* Chapter 3 */
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('16', 'Iterative process flow', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('17', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('18', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('19', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('20', 'SPICE', 'n');
+
+/* Chapter 4 */
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('21', 'A good approach when a working program is required quickly', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('22', 'A good approach when a working program is required quickly', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('23', 'Can easily accomodate product requirements changes.', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('24', 'A useful approach when a customer cannot define requirements clearly.', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('25', 'Is more chaotic than the incremental model.', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('26', 'Defines events that trigger engineering activity state transitions.', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('27', 'Not able to support the development of reusable components.', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('28', 'Develop defect free computer-based systems.', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('29', 'Elaboration phase', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('30', 'Practitioner requires careful supervision by the project manager.', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('31', 'Allow better time management by highly trained professionals', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('32', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('33', 'False', 'n');
+
+/* Chapter 5 */
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('34', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('35', 'Only essential work products are produced', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('36', 'Risk analysis must be conducted before planning takes place', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('37', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('38', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('39', 'planning, analysis, design, coding', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('40', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('41', 'What obstacles are you creating?', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('42', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('43', 'Design', 'n');
+
+INSERT INTO False (questionID, answer, correct)
+VALUES ('44', 'True', 'n');
+
+/* Chapter 6 */
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('45', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('46', 'Brutally honest', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('47', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('48', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('49', 'Inadequate budget', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('50', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('51', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('52', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('53', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('54', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('55', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('56', 'Different views of the problem', 'n');
+
+
+/* Chapter 7 */
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('57', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('58', 'A software system exists only to provide value to its users.', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('59', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('60', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('61', 'control feature creep', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('62', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('63', 'cost, risk, schedule', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('64', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('65', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('66', 'Create unit tests before you begin coding', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('67', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('68', 'Delivery schedule can be revised to reflect changes', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('69', 'False', 'y');
+
+/* Chapter 8 */
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('70', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('71', 'nature of the solution needed', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('72', 'scope', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('73', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('74', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('75', 'Who is behind the request for work?', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('76', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('77', 'can not be a customer', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('78', 'expected', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('79', 'size of the product being built.', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('80', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('81', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('82', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('83', 'functional', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('84', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('85', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('86', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('87', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('88', 'False', 'y');
+
+/* Chapter 9 */
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('89', 'Class-based elements', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('90', 'describe customer requirements', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('91', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('92', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('93', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('94', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('95', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('96', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('97', 'Class-based elements', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('98', 'False', 'y');
+
+
+/* Chapter 10 */
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('99', 'people', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('100', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('101', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('102', 'data manipulation', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('103', 'False', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('104', 'class name', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('105', 'its collaborators', 'n');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('106', 'False', 'y');
+
+INSERT INTO Answer2 (questionID, answer, correct)
+VALUES ('107', 'False', 'n');
