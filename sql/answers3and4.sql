@@ -285,10 +285,10 @@ VALUES (88, null,'n');
 /* Chapter 9 */
 
 INSERT INTO answer3 (questionID,answer,correct)
-VALUES (89,'Data elements','n');
+VALUES (89,'Data elements','y');
 
 INSERT INTO answer3 (questionID,answer,correct)
-VALUES (90,'develop an abbreviated solution for the problem','n');
+VALUES (90,'develop an abbreviated solution for the problem','y');
 
 INSERT INTO answer3 (questionID,answer,correct)
 VALUES (91, null,'n');
