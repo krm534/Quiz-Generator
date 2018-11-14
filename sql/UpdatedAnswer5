@@ -75,7 +75,7 @@ INSERT INTO Answer5 (questionID, answer, correct)
 VALUES ('25', NULL, 'n');
 
 INSERT INTO Answer5 (questionID, answer, correct)
-VALUES ('26', 'both A and B, 'y');
+VALUES ('26', 'both A and B', 'y');
 
 INSERT INTO Answer5 (questionID, answer, correct)
 VALUES ('27', NULL, 'n');

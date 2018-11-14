@@ -344,7 +344,7 @@ INSERT INTO Answer1 (questionID, answer, correct)
 VALUES ('107', 'True', 'y');
 
 /* ANSWER 2 BEGIN */
-4
+
 /* Chapter 1 */
 
 INSERT INTO Answer2 (questionID, answer, correct)
@@ -484,7 +484,7 @@ VALUES ('42', 'False', 'n');
 INSERT INTO Answer2 (questionID, answer, correct)
 VALUES ('43', 'Design', 'n');
 
-INSERT INTO False (questionID, answer, correct)
+INSERT INTO Answer2 (questionID, answer, correct)
 VALUES ('44', 'True', 'n');
 
 /* Chapter 6 */
