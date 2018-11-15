@@ -1,12 +1,19 @@
 <!doctype html>
 <html lang="en">
+<meta charset="UTF-8"> 
 <head>
-  <title>  </title>
+  <title> Take a Quiz </title>
   <link rel="stylesheet" href=""> 
 </head>
 <body>
 
 <?php
+
+//there was an error with unicode and apostrophes so this should fix it
+function fixString($string) {
+    return preg_replace('/[^\x00-\x7f]/', '\'', $string);
+}
+
 $servername = "localhost";
 $username = "root";
 //your password
@@ -51,7 +58,7 @@ for($i = 0; $i < count($chapterQuestionPair); $i++){
 */
 //selects every question and answer
 //select question, Answer1.answer as A,Answer2.answer as B,Answer3.answer as C, Answer4.answer as D, Answer5.answer as E from Questions, Answer1, Answer2,Answer3,Answer4,Answer5 where Questions.questionID = Answer1.questionID and Questions.questionID = Answer2.questionID and Questions.questionID = Answer3.questionID and Questions.questionID = Answer4.questionID and Questions.questionID = Answer5.questionID;
-
+echo '<form>';
 //Make each query and send it off to find the results
 for($i = 0; $i < count($chapterQuestionPair); $i++){
     $questionAnswerQuery = "select chapter, question, Answer1.answer as A,Answer2.answer as B,Answer3.answer as C, Answer4.answer as D, Answer5.answer as E from Questions, Answer1, Answer2,Answer3,Answer4,Answer5 where Questions.questionID = Answer1.questionID and Questions.questionID = Answer2.questionID and Questions.questionID = Answer3.questionID and Questions.questionID = Answer4.questionID and Questions.questionID = Answer5.questionID";
@@ -64,26 +71,30 @@ for($i = 0; $i < count($chapterQuestionPair); $i++){
     if($results->num_rows > 0){
         //output the data found
         while($row = $results->fetch_assoc()){
-            //compare the questionCounter to the numberOfQuestions to only print out
-            //the amount of questions the array calls for
+            //compare the questionCounter to the numberOfQuestions to only print out the amount of questions the array calls for
             if($questionCounter < $numberOfQuestions){
-                echo 'Chapter = ' . $row["chapter"] . ' Question = ' . $row["question"];
+                echo fixString($row["question"]) . "<br>";
+                echo '<input type="radio" name="chapter'. $row["chapter"]. 'question' . ($questionCounter+1) . '" value="a">A = ' . fixString($row["A"]) . '<br>';
+                echo '<input type="radio" name="chapter'. $row["chapter"]. 'question' . ($questionCounter+1) . '" value="b">B = ' . fixString($row["B"]) . '<br>';
+                if($row["C"] != null){
+                    echo '<input type="radio" name="chapter'. $row["chapter"]. 'question' . ($questionCounter+1) . '" value="c">C = ' . fixString($row["C"]) . '<br>';
+                }
+                if($row["D"] != null){
+                    echo '<input type="radio" name="chapter'. $row["chapter"]. 'question' . ($questionCounter+1) . '" value="d">D = ' . fixString($row["D"]) . '<br>';
+                }
+                if($row["E"] != null){
+                    echo '<input type="radio" name="chapter'. $row["chapter"]. 'question' . ($questionCounter+1) . '" value="e">E = ' . fixString($row["E"]) . '<br>';
+                }
                 echo '<br>';
-                echo 'A = ' . $row["A"] . '<br>';
-                echo 'B = ' . $row["B"] . '<br>';
-                echo 'C = ' . $row["C"] . '<br>';
-                echo 'D = ' . $row["D"] . '<br>';
-                echo 'E = ' . $row["E"] . '<br>';
             }
-            $questionCounter++;
+            $questionCounter = $questionCounter + 1;
         }
     }
     else{
         echo 'Result is 0';
     }
-    
 }
-
+echo '</form>';
 ?>
   
 </body>
