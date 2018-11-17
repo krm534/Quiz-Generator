@@ -17,7 +17,7 @@ function fixString($string) {
 $servername = "localhost";
 $username = "root";
 //your password
-$password = "";
+$password = "Hellias8484";
 $database = "seQuiz";
 
 // Create connection
