@@ -8,14 +8,15 @@
     	
 		<!-- Bootstrap external CSS -->
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/popup.css">
 		<title>Quiz Generator</title>
 	</head>
-	<body>
+	<body onload = "checkform()">
 		<div class="container">
   			<h2>Generate A Quiz</h2>
   			<p>Select how many questions from each chapter you would like to take a quiz on. Press the generate quiz button to begin.</p>
   			
-  			<form action="php/generateQuiz.php" method="post">
+  			<form action="php/generateQuiz.php" name=questionGroup onclick="checkform()" method="post">
   				<label>Chapter 1: </label>
       			<select name="questions[]" id="chapter1Group">
         			<option value="0">0</option>
@@ -192,11 +193,57 @@
       			
       			<br>
       			<br>
-      			
-      			<button type="submit" class="btn btn-primary">Generate Quiz</button>
-      			
+				
+      			<div class="popup">
+					<span class="popuptext" id="myPopup">Select at least one question before beginning</span>
+					<button type="submit" class="btn btn-primary" id ="generateQuizButton" onmouseover="showPopup()" onmouseleave="showPopup()">Generate Quiz</button>
+      			</div>
+				
+				<button class="btn btn-primary" id ="viewPastQuizzesButton">View Past Quizzes</button>
+				
       		</form>
       		  
   		</div>
+		
+		<script>
+		var cansubmit;
+		
+		function checkform()
+		{
+			cansubmit = false;
+			
+			var f = document.forms["questionGroup"].elements;
+			
+
+			for (var i = 0; i < 10; i++)
+			{
+				if (f[i].value > 0) 
+				{
+					cansubmit = true;
+					break;
+				}
+			}
+
+			if (cansubmit) 
+			{
+				document.getElementById('generateQuizButton').disabled = false;
+			}
+			else
+			{
+				document.getElementById('generateQuizButton').disabled = 'disabled';
+			}
+		}
+		
+		// When a user hovers over the div, shows the popup
+		function showPopup() {
+			if (cansubmit == false)
+			{
+				var popup = document.getElementById("myPopup");
+				popup.classList.toggle("show");
+			}
+		}
+
+	</script>
+		
  	</body>
  </html>

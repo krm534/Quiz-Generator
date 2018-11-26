@@ -3,11 +3,27 @@
 <meta charset="UTF-8"> 
 <head>
   <title> Take a Quiz </title>
-  <link rel="stylesheet" href=""> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+<<<<<<< HEAD
+  <link rel="stylesheet" href="../css/popup.css">
+=======
+>>>>>>> parent of 9c6f5a0... Revert "Made it pretty and did a bit of error checking"
 </head>
-<body>
+<body onload="checkform()">
 
 <?php
+
+echo 
+'
+	<div class="container">
+  	<h2>Quiz In Progress</h2>
+<<<<<<< HEAD
+  	<p>Select an answer for each question. Press the grade button when finished.</p>
+=======
+  	<p>Select an answer for each question. Press the grade button to when finished.</p>
+>>>>>>> parent of 9c6f5a0... Revert "Made it pretty and did a bit of error checking"
+  	
+';
 
 //there was an error with unicode and apostrophes so this should fix it
 function fixString($string) {
@@ -18,16 +34,16 @@ function fixString($string) {
 function printQuestion($row){
     //for each answer, the pair of [answer, questionID] is passed into the post array
     echo fixString($row["question"]) . "<br>";
-    echo '<input type="radio" name="question'. $row['quesID']. '" value="['.fixString($row["A"]).', '.$row['quesID'].']">A = ' . fixString($row["A"]) . '<br>';
-    echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["B"]) .', '.$row['quesID'].']">B = ' . fixString($row["B"]) . '<br>';
+    echo '<input type="radio" name="question'. $row['quesID']. '" value="[a, '.$row['quesID'].']"> A - ' . fixString($row["A"]) . '<br>';
+    echo '<input type="radio" name="question'. $row['quesID']. '" value="[b, '.$row['quesID'].']"> B - ' . fixString($row["B"]) . '<br>';
     if($row["C"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["C"]) .', '.$row['quesID'].']">C = ' . fixString($row["C"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="[c, '.$row['quesID'].']"> C - ' . fixString($row["C"]) . '<br>';
     }
     if($row["D"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["D"]) .', '.$row['quesID'].']">D = ' . fixString($row["D"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="[d, '.$row['quesID'].']"> D - ' . fixString($row["D"]) . '<br>';
     }
     if($row["E"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["E"]) .', '.$row['quesID'].']">E = ' . fixString($row["E"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="[e, '.$row['quesID'].']"> E - ' . fixString($row["E"]) . '<br>';
     }
     echo '<br>';    
 }
@@ -35,7 +51,7 @@ function printQuestion($row){
 $servername = "localhost";
 $username = "root";
 //your password
-$password = "Hellias8484";
+$password = "";
 $database = "seQuiz";
 
 // Create connection
@@ -49,12 +65,11 @@ echo "Connected successfully<br>";
 */
 
 //each index corresponds with a chapter and each value corresponds with the number of questions
-//CHANGE THIS TO GET FROM THE POST ARRAY TO CONNECT TO HOMEPAGE
-$questions = array(4,0,0,2,0,0,0,0,0,0);
+$questions=$_POST['questions'];
 
 //this would handle for the saved quizzes passing in the text of 
 //CHANGE THIS TO GET FROM THE POST ARRAY TO CONNECT TO THE SAVEDQUIZZES PAGE
-$savedQuestionsText = '1, 6, 25, 75 ';
+$savedQuestionsText = '';
 if(($savedQuestionsText == null or $savedQuestionsText == '')){
     $savedQuestions = null; 
 }
@@ -82,7 +97,7 @@ for($i = 0; $i < count($chapterQuestionPair); $i++){
 */
 //selects every question and answer
 //select question, Answer1.answer as A,Answer2.answer as B,Answer3.answer as C, Answer4.answer as D, Answer5.answer as E from Questions, Answer1, Answer2,Answer3,Answer4,Answer5 where Questions.questionID = Answer1.questionID and Questions.questionID = Answer2.questionID and Questions.questionID = Answer3.questionID and Questions.questionID = Answer4.questionID and Questions.questionID = Answer5.questionID;
-echo '<form action="results.php" method="post">';
+echo '<form action="results.php" name="questionGroup" method="post" onclick="checkform()">';
 if($savedQuestions){
     $questionAnswerQuery = "select Questions.questionID as quesID, chapter, question, Answer1.answer as A,Answer2.answer as B,Answer3.answer as C, Answer4.answer as D, Answer5.answer as E from Questions, Answer1, Answer2,Answer3,Answer4,Answer5 where Questions.questionID = Answer1.questionID and Questions.questionID = Answer2.questionID and Questions.questionID = Answer3.questionID and Questions.questionID = Answer4.questionID and Questions.questionID = Answer5.questionID and (";
     //loop through the array adding the questionIDs to the query
@@ -104,11 +119,13 @@ if($savedQuestions){
 }
 else{
     $questionIdString = '';
+	$totalQuestionCount = 0;
     //Make each query and send it off to find the results
     for($i = 0; $i < count($chapterQuestionPair); $i++){
         $questionAnswerQuery = "select Questions.questionID as quesID, chapter, question, Answer1.answer as A,Answer2.answer as B,Answer3.answer as C, Answer4.answer as D, Answer5.answer as E from Questions, Answer1, Answer2,Answer3,Answer4,Answer5 where Questions.questionID = Answer1.questionID and Questions.questionID = Answer2.questionID and Questions.questionID = Answer3.questionID and Questions.questionID = Answer4.questionID and Questions.questionID = Answer5.questionID";
         $chapter = $chapterQuestionPair[$i][0];
         $numberOfQuestions = $chapterQuestionPair[$i][1]; 
+		$totalQuestionCount += $numberOfQuestions;
         $questionAnswerQuery = $questionAnswerQuery . " and Questions.chapter = " . $chapter;
         $results = $conn->query($questionAnswerQuery);
 
@@ -140,14 +157,75 @@ else{
     $checkSavedQuizzes = "select * from SavedQuizzes where questions = '" . $questionIdString . "' and chapters = '" . $chapterString . "'";
     $checkSaved = $conn->query($checkSavedQuizzes);
     //if it does not exist, put the quiz in the database
-    if($checkSaved->num_row == 0){
+    if($checkSaved->num_rows == 0){
         $savedQuizzesQuery = "insert into SavedQuizzes(questions, chapters) values ('". $questionIdString ."', '" . $chapterString . "')";
         $results = $conn->query($savedQuizzesQuery);
     }
 }
-echo '<button type="submit" name="submit">Submit</button>';
+<<<<<<< HEAD
+echo 
+"
+	<div class=\"popup\">
+		<span class=\"popuptext\" id=\"myPopup\">Select an answer for each question before submitting.</span>
+		<button type=\"submit\" class=\"btn btn-primary\" onmouseover=\"showPopup()\" onmouseleave=\"showPopup()\" id=\"submit\">Submit</button>
+	</div>
+";
+
+=======
+echo '<button type="submit" class="btn btn-primary" name="submit">Submit</button>';
+>>>>>>> parent of 9c6f5a0... Revert "Made it pretty and did a bit of error checking"
 echo '</form>';
+
+echo '</div>';
 ?>
-  
+
+<script>
+		var cansubmit = true;
+		
+		function checkform()
+		{
+			var cansubmit = true;
+			var numberOfQuestions = parseInt("<?php echo $totalQuestionCount; ?>");
+			for (i = 0; i < numberOfQuestions - 1; i++)
+			{
+				var questionHasAnswerSelected = false;
+				var currentQuestion = document.getElementsByName("question" + (parseInt(i) + 1).toString());
+				for (j = 0; j < currentQuestion.length; j++)
+				{
+					if (currentQuestion[j].checked == true)
+					{
+						questionHasAnswerSelected = true;
+						break;
+					}
+				}
+				
+				if (questionHasAnswerSelected == false)
+				{
+					cansubmit = false;
+				}
+				alert(cansubmit);
+			}
+
+			if (cansubmit) 
+			{
+				document.getElementById('submit').disabled = false;
+			}
+			else
+			{
+				document.getElementById('submit').disabled = 'disabled';
+			}
+		}
+		
+		// When a user hovers over the div, shows the popup
+		function showPopup() {
+			if (cansubmit == false)
+			{
+				var popup = document.getElementById("myPopup");
+				popup.classList.toggle("show");
+			}
+		}
+
+</script>
+
 </body>
 </html>
