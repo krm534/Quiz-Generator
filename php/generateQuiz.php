@@ -3,11 +3,19 @@
 <meta charset="UTF-8"> 
 <head>
   <title> Take a Quiz </title>
-  <link rel="stylesheet" href=""> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 </head>
 <body>
 
 <?php
+
+echo 
+'
+	<div class="container">
+  	<h2>Quiz In Progress</h2>
+  	<p>Select an answer for each question. Press the grade button to when finished.</p>
+  	
+';
 
 //there was an error with unicode and apostrophes so this should fix it
 function fixString($string) {
@@ -18,16 +26,16 @@ function fixString($string) {
 function printQuestion($row){
     //for each answer, the pair of [answer, questionID] is passed into the post array
     echo fixString($row["question"]) . "<br>";
-    echo '<input type="radio" name="question'. $row['quesID']. '" value="[a, '.$row['quesID'].']">A = ' . fixString($row["A"]) . '<br>';
-    echo '<input type="radio" name="question'. $row['quesID']. '" value="[b, '.$row['quesID'].']">B = ' . fixString($row["B"]) . '<br>';
+    echo '<input type="radio" name="question'. $row['quesID']. '" value="[a, '.$row['quesID'].']"> A - ' . fixString($row["A"]) . '<br>';
+    echo '<input type="radio" name="question'. $row['quesID']. '" value="[b, '.$row['quesID'].']"> B - ' . fixString($row["B"]) . '<br>';
     if($row["C"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="[c, '.$row['quesID'].']">C = ' . fixString($row["C"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="[c, '.$row['quesID'].']"> C - ' . fixString($row["C"]) . '<br>';
     }
     if($row["D"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="[d, '.$row['quesID'].']">D = ' . fixString($row["D"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="[d, '.$row['quesID'].']"> D - ' . fixString($row["D"]) . '<br>';
     }
     if($row["E"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="[e, '.$row['quesID'].']">E = ' . fixString($row["E"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="[e, '.$row['quesID'].']"> E - ' . fixString($row["E"]) . '<br>';
     }
     echo '<br>';    
 }
@@ -145,8 +153,10 @@ else{
         $results = $conn->query($savedQuizzesQuery);
     }
 }
-echo '<button type="submit" name="submit">Submit</button>';
+echo '<button type="submit" class="btn btn-primary" name="submit">Submit</button>';
 echo '</form>';
+
+echo '</div>';
 ?>
   
 </body>
