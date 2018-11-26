@@ -25,16 +25,16 @@ function fixString($string) {
 function printQuestion($row){
     //for each answer, the pair of [answer, questionID] is passed into the post array
     echo fixString($row["question"]) . "<br>";
-    echo '<input type="radio" name="question'. $row['quesID']. '" value="[a, '.$row['quesID'].']"> A - ' . fixString($row["A"]) . '<br>';
-    echo '<input type="radio" name="question'. $row['quesID']. '" value="[b, '.$row['quesID'].']"> B - ' . fixString($row["B"]) . '<br>';
+    echo '<input type="radio" name="question'. $row['quesID']. '" value="['.fixString($row["A"]).', '.$row['quesID'].']">A = ' . fixString($row["A"]) . '<br>';
+    echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["B"]) .', '.$row['quesID'].']">B = ' . fixString($row["B"]) . '<br>';
     if($row["C"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="[c, '.$row['quesID'].']"> C - ' . fixString($row["C"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["C"]) .', '.$row['quesID'].']">C = ' . fixString($row["C"]) . '<br>';
     }
     if($row["D"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="[d, '.$row['quesID'].']"> D - ' . fixString($row["D"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["D"]) .', '.$row['quesID'].']">D = ' . fixString($row["D"]) . '<br>';
     }
     if($row["E"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="[e, '.$row['quesID'].']"> E - ' . fixString($row["E"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["E"]) .', '.$row['quesID'].']">E = ' . fixString($row["E"]) . '<br>';
     }
     echo '<br>';    
 }
@@ -109,14 +109,12 @@ if($savedQuestions){
     }
 }
 else{
-    $questionIdString = '';
-	$totalQuestionCount = 0;
+    $questionIdArray = array();
     //Make each query and send it off to find the results
     for($i = 0; $i < count($chapterQuestionPair); $i++){
         $questionAnswerQuery = "select Questions.questionID as quesID, chapter, question, Answer1.answer as A,Answer2.answer as B,Answer3.answer as C, Answer4.answer as D, Answer5.answer as E from Questions, Answer1, Answer2,Answer3,Answer4,Answer5 where Questions.questionID = Answer1.questionID and Questions.questionID = Answer2.questionID and Questions.questionID = Answer3.questionID and Questions.questionID = Answer4.questionID and Questions.questionID = Answer5.questionID";
         $chapter = $chapterQuestionPair[$i][0];
         $numberOfQuestions = $chapterQuestionPair[$i][1]; 
-		$totalQuestionCount += $numberOfQuestions;
         $questionAnswerQuery = $questionAnswerQuery . " and Questions.chapter = " . $chapter;
         $results = $conn->query($questionAnswerQuery);
 
@@ -132,16 +130,18 @@ else{
             //print out the number of quesitons
             for($x = 0; $x < $numberOfQuestions; $x++){
                 printQuestion($randomArray[$x]);
-                //make the string to pass to the saved querry table
-                $questionIdString = $questionIdString . $randomArray[$x]['quesID'] . ', ';
+                //push the questionIDs to the questionIdArray
+                array_push($questionIdArray, $randomArray[$x]['quesID']);
             }
         }
         else{
             echo 'Result is 0';
         }
     }
-    //remove the last ', '
-    $questionIdString = substr($questionIdString, 0, -2);
+    //sort the questionIdArray
+    sort($questionIdArray);
+    //make the questionIdArray into a string
+    $questionIdString = implode(', ', $questionIdArray);
     //makes the chapter array into a string
     $chapterString = implode(',', $questions); 
     //checks if the exact quiz already exists in the saved quizzes database
@@ -153,7 +153,6 @@ else{
         $results = $conn->query($savedQuizzesQuery);
     }
 }
-
 echo 
 "
 	<button type=\"submit\" class=\"btn btn-primary\" id=\"submit\">Submit</button>
