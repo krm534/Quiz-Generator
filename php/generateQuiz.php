@@ -50,7 +50,7 @@ echo "Connected successfully<br>";
 
 //each index corresponds with a chapter and each value corresponds with the number of questions
 //CHANGE THIS TO GET FROM THE POST ARRAY TO CONNECT TO HOMEPAGE
-$questions = array(4,0,0,2,0,0,0,0,0,0);
+$questions=$_POST['questions'];
 
 //this would handle for the saved quizzes passing in the text of 
 //CHANGE THIS TO GET FROM THE POST ARRAY TO CONNECT TO THE SAVEDQUIZZES PAGE

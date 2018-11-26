@@ -15,9 +15,9 @@
   			<h2>Quiz Generator</h2>
   			<p>Select how many questions from each chapter you would like to take a quiz on. Press the submit button when ready.</p>
   			
-  			<form>
+  			<form action="php/generateQuiz.php" method="post">
   				<label>Chapter 1: </label>
-      			<select name="chapter1Group" id="chapter1Group">
+      			<select name="questions[]" id="chapter1Group">
         			<option value="0">0</option>
        				<option value="1">1</option>
         			<option value="2">2</option>
@@ -26,11 +26,11 @@
         			<option value="5">5</option>
         			<option value="6">6</option>
       			</select>
-      		</form>
-      		
-      		<form>
+				
+				<br>
+				
   				<label>Chapter 2: </label>
-      			<select name="chapter2Group" id="chapter2Group">
+      			<select name="questions[]" id="chapter2Group">
         			<option value="0">0</option>
        				<option value="1">1</option>
         			<option value="2">2</option>
@@ -41,11 +41,11 @@
         			<option value="7">7</option>
        				<option value="8">8</option>
       			</select>
-      		</form>
-      		
-      		<form>
+				
+				<br>
+				
   				<label>Chapter 3: </label>
-      			<select name="chapter3Group" id="chapter3Group">
+      			<select name="questions[]" id="chapter3Group">
         			<option value="0">0</option>
        				<option value="1">1</option>
         			<option value="2">2</option>
@@ -53,11 +53,11 @@
         			<option value="4">4</option>
         			<option value="5">5</option>
        			</select>
-      		</form>
-      		
-      		<form>
+				
+				<br>
+				
   				<label>Chapter 4: </label>
-      			<select name="chapter4Group" id="chapter4Group">
+      			<select name="questions[]" id="chapter4Group">
         			<option value="0">0</option>
        				<option value="1">1</option>
         			<option value="2">2</option>
@@ -73,11 +73,11 @@
         			<option value="12">12</option>
         			<option value="13">13</option>
        			</select>
-      		</form>
-      		
-      		<form>
+				
+   				<br>
+				
   				<label>Chapter 5: </label>
-      			<select name="chapter5Group" id="chapter5Group">
+      			<select name="questions[]" id="chapter5Group">
         			<option value="0">0</option>
        				<option value="1">1</option>
         			<option value="2">2</option>
@@ -91,11 +91,11 @@
         			<option value="10">10</option>
         			<option value="11">11</option>
        			</select>
-      		</form>
-      		
-      		<form>
+				
+				<br>
+				
   				<label>Chapter 6: </label>
-      			<select name="chapter6Group" id="chapter6Group">
+      			<select name="questions[]" id="chapter6Group">
         			<option value="0">0</option>
        				<option value="1">1</option>
         			<option value="2">2</option>
@@ -110,11 +110,11 @@
         			<option value="11">11</option>
         			<option value="12">12</option>
        			</select>
-      		</form>
-      		
-      		<form>
+				
+				<br>
+				
   				<label>Chapter 7: </label>
-      			<select name="chapter7Group" id="chapter7Group">
+      			<select name="questions[]" id="chapter7Group">
         			<option value="0">0</option>
        				<option value="1">1</option>
         			<option value="2">2</option>
@@ -130,11 +130,11 @@
         			<option value="12">12</option>
         			<option value="13">13</option>
        			</select>
-      		</form>
-      		
-      		<form>
+				
+				<br>
+				
   				<label>Chapter 8: </label>
-      			<select name="chapter8Group" id="chapter8Group">
+      			<select name="questions[]" id="chapter8Group">
         			<option value="0">0</option>
        				<option value="1">1</option>
         			<option value="2">2</option>
@@ -156,11 +156,11 @@
         			<option value="18">18</option>
         			<option value="19">19</option>
       			</select>
-      		</form>
-      		
-      		<form>
+	
+				<br>
+
   				<label>Chapter 9: </label>
-      			<select name="chapter9Group" id="chapter9Group">
+      			<select name="questions[]" id="chapter9Group">
         			<option value="0">0</option>
        				<option value="1">1</option>
         			<option value="2">2</option>
@@ -173,11 +173,11 @@
         			<option value="9">9</option>
         			<option value="10">10</option>
       			</select>
-      		</form>
-      		
-      		<form>
+				
+				<br>
+				
   				<label>Chapter 10: </label>
-      			<select name="chapter10Group" id="chapter10Group">
+      			<select name="questions[]" id="chapter10Group">
         			<option value="0">0</option>
        				<option value="1">1</option>
         			<option value="2">2</option>
