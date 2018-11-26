@@ -4,10 +4,6 @@
 <head>
   <title> Take a Quiz </title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
-<<<<<<< HEAD
-  <link rel="stylesheet" href="../css/popup.css">
-=======
->>>>>>> parent of 9c6f5a0... Revert "Made it pretty and did a bit of error checking"
 </head>
 <body onload="checkform()">
 
@@ -17,12 +13,7 @@ echo
 '
 	<div class="container">
   	<h2>Quiz In Progress</h2>
-<<<<<<< HEAD
-  	<p>Select an answer for each question. Press the grade button when finished.</p>
-=======
-  	<p>Select an answer for each question. Press the grade button to when finished.</p>
->>>>>>> parent of 9c6f5a0... Revert "Made it pretty and did a bit of error checking"
-  	
+  	<p>Select an answer for each question. Press the submit button when finished.</p>
 ';
 
 //there was an error with unicode and apostrophes so this should fix it
@@ -97,7 +88,7 @@ for($i = 0; $i < count($chapterQuestionPair); $i++){
 */
 //selects every question and answer
 //select question, Answer1.answer as A,Answer2.answer as B,Answer3.answer as C, Answer4.answer as D, Answer5.answer as E from Questions, Answer1, Answer2,Answer3,Answer4,Answer5 where Questions.questionID = Answer1.questionID and Questions.questionID = Answer2.questionID and Questions.questionID = Answer3.questionID and Questions.questionID = Answer4.questionID and Questions.questionID = Answer5.questionID;
-echo '<form action="results.php" name="questionGroup" method="post" onclick="checkform()">';
+echo '<form action="results.php" method="post">';
 if($savedQuestions){
     $questionAnswerQuery = "select Questions.questionID as quesID, chapter, question, Answer1.answer as A,Answer2.answer as B,Answer3.answer as C, Answer4.answer as D, Answer5.answer as E from Questions, Answer1, Answer2,Answer3,Answer4,Answer5 where Questions.questionID = Answer1.questionID and Questions.questionID = Answer2.questionID and Questions.questionID = Answer3.questionID and Questions.questionID = Answer4.questionID and Questions.questionID = Answer5.questionID and (";
     //loop through the array adding the questionIDs to the query
@@ -162,70 +153,16 @@ else{
         $results = $conn->query($savedQuizzesQuery);
     }
 }
-<<<<<<< HEAD
+
 echo 
 "
-	<div class=\"popup\">
-		<span class=\"popuptext\" id=\"myPopup\">Select an answer for each question before submitting.</span>
-		<button type=\"submit\" class=\"btn btn-primary\" onmouseover=\"showPopup()\" onmouseleave=\"showPopup()\" id=\"submit\">Submit</button>
-	</div>
+	<button type=\"submit\" class=\"btn btn-primary\" id=\"submit\">Submit</button>
 ";
 
-=======
-echo '<button type="submit" class="btn btn-primary" name="submit">Submit</button>';
->>>>>>> parent of 9c6f5a0... Revert "Made it pretty and did a bit of error checking"
 echo '</form>';
-
 echo '</div>';
+
 ?>
-
-<script>
-		var cansubmit = true;
-		
-		function checkform()
-		{
-			var cansubmit = true;
-			var numberOfQuestions = parseInt("<?php echo $totalQuestionCount; ?>");
-			for (i = 0; i < numberOfQuestions - 1; i++)
-			{
-				var questionHasAnswerSelected = false;
-				var currentQuestion = document.getElementsByName("question" + (parseInt(i) + 1).toString());
-				for (j = 0; j < currentQuestion.length; j++)
-				{
-					if (currentQuestion[j].checked == true)
-					{
-						questionHasAnswerSelected = true;
-						break;
-					}
-				}
-				
-				if (questionHasAnswerSelected == false)
-				{
-					cansubmit = false;
-				}
-				alert(cansubmit);
-			}
-
-			if (cansubmit) 
-			{
-				document.getElementById('submit').disabled = false;
-			}
-			else
-			{
-				document.getElementById('submit').disabled = 'disabled';
-			}
-		}
-		
-		// When a user hovers over the div, shows the popup
-		function showPopup() {
-			if (cansubmit == false)
-			{
-				var popup = document.getElementById("myPopup");
-				popup.classList.toggle("show");
-			}
-		}
-
-</script>
 
 </body>
 </html>
