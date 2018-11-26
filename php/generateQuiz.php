@@ -140,7 +140,7 @@ else{
     $checkSavedQuizzes = "select * from SavedQuizzes where questions = '" . $questionIdString . "' and chapters = '" . $chapterString . "'";
     $checkSaved = $conn->query($checkSavedQuizzes);
     //if it does not exist, put the quiz in the database
-    if($checkSaved->num_row == 0){
+    if($checkSaved->num_rows == 0){
         $savedQuizzesQuery = "insert into SavedQuizzes(questions, chapters) values ('". $questionIdString ."', '" . $chapterString . "')";
         $results = $conn->query($savedQuizzesQuery);
     }
