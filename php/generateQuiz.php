@@ -3,19 +3,11 @@
 <meta charset="UTF-8"> 
 <head>
   <title> Take a Quiz </title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+  <link rel="stylesheet" href=""> 
 </head>
 <body>
 
 <?php
-
-echo 
-'
-	<div class="container">
-  	<h2>Quiz In Progress</h2>
-  	<p>Select an answer for each question. Press the grade button to when finished.</p>
-  	
-';
 
 //there was an error with unicode and apostrophes so this should fix it
 function fixString($string) {
@@ -26,16 +18,16 @@ function fixString($string) {
 function printQuestion($row){
     //for each answer, the pair of [answer, questionID] is passed into the post array
     echo fixString($row["question"]) . "<br>";
-    echo '<input type="radio" name="question'. $row['quesID']. '" value="[a, '.$row['quesID'].']"> A - ' . fixString($row["A"]) . '<br>';
-    echo '<input type="radio" name="question'. $row['quesID']. '" value="[b, '.$row['quesID'].']"> B - ' . fixString($row["B"]) . '<br>';
+    echo '<input type="radio" name="question'. $row['quesID']. '" value="['.fixString($row["A"]).', '.$row['quesID'].']">A = ' . fixString($row["A"]) . '<br>';
+    echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["B"]) .', '.$row['quesID'].']">B = ' . fixString($row["B"]) . '<br>';
     if($row["C"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="[c, '.$row['quesID'].']"> C - ' . fixString($row["C"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["C"]) .', '.$row['quesID'].']">C = ' . fixString($row["C"]) . '<br>';
     }
     if($row["D"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="[d, '.$row['quesID'].']"> D - ' . fixString($row["D"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["D"]) .', '.$row['quesID'].']">D = ' . fixString($row["D"]) . '<br>';
     }
     if($row["E"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="[e, '.$row['quesID'].']"> E - ' . fixString($row["E"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["E"]) .', '.$row['quesID'].']">E = ' . fixString($row["E"]) . '<br>';
     }
     echo '<br>';    
 }
@@ -43,7 +35,7 @@ function printQuestion($row){
 $servername = "localhost";
 $username = "root";
 //your password
-$password = "";
+$password = "Hellias8484";
 $database = "seQuiz";
 
 // Create connection
@@ -58,11 +50,11 @@ echo "Connected successfully<br>";
 
 //each index corresponds with a chapter and each value corresponds with the number of questions
 //CHANGE THIS TO GET FROM THE POST ARRAY TO CONNECT TO HOMEPAGE
-$questions=$_POST['questions'];
+$questions = array(4,0,0,2,0,0,0,0,0,0);
 
 //this would handle for the saved quizzes passing in the text of 
 //CHANGE THIS TO GET FROM THE POST ARRAY TO CONNECT TO THE SAVEDQUIZZES PAGE
-$savedQuestionsText = '';
+$savedQuestionsText = '1, 6, 25, 75 ';
 if(($savedQuestionsText == null or $savedQuestionsText == '')){
     $savedQuestions = null; 
 }
@@ -148,15 +140,13 @@ else{
     $checkSavedQuizzes = "select * from SavedQuizzes where questions = '" . $questionIdString . "' and chapters = '" . $chapterString . "'";
     $checkSaved = $conn->query($checkSavedQuizzes);
     //if it does not exist, put the quiz in the database
-    if($checkSaved->num_rows == 0){
+    if($checkSaved->num_row == 0){
         $savedQuizzesQuery = "insert into SavedQuizzes(questions, chapters) values ('". $questionIdString ."', '" . $chapterString . "')";
         $results = $conn->query($savedQuizzesQuery);
     }
 }
-echo '<button type="submit" class="btn btn-primary" name="submit">Submit</button>';
+echo '<button type="submit" name="submit">Submit</button>';
 echo '</form>';
-
-echo '</div>';
 ?>
   
 </body>
