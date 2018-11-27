@@ -1,0 +1,48 @@
+create database seQuiz;
+
+create table Chapters(
+chapterID INT PRIMARY KEY,
+numberOfQuestions INT
+);
+
+create table Questions(
+questionID INT PRIMARY KEY, 
+chapter INT, 
+question TEXT, 
+FOREIGN KEY(chapter) REFERENCES Chapters(chapterID)
+);
+
+create table Answer1(
+questionID INT PRIMARY KEY, 
+answer TEXT,
+correct CHAR(2),
+FOREIGN KEY(questionID) REFERENCES Questions(questionID)
+);
+
+create table Answer2(
+questionID INT PRIMARY KEY, 
+answer TEXT,
+correct CHAR(2),
+FOREIGN KEY(questionID) REFERENCES Questions(questionID)
+);
+
+create table Answer3(
+questionID INT PRIMARY KEY, 
+answer TEXT,
+correct CHAR(2),
+FOREIGN KEY(questionID) REFERENCES Questions(questionID)
+);
+
+create table Answer4(
+questionID INT PRIMARY KEY, 
+answer TEXT,
+correct CHAR(2),
+FOREIGN KEY(questionID) REFERENCES Questions(questionID)
+);
+
+create table Answer5(
+questionID INT PRIMARY KEY, 
+answer TEXT,
+correct CHAR(2),
+FOREIGN KEY(questionID) REFERENCES Questions(questionID)
+);
