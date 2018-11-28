@@ -8,7 +8,7 @@
 <body onload="checkform()">
 
 <?php
-
+error_reporting(E_ALL); ini_set('display_errors', '1');
 echo 
 '
 	<div class="container">
@@ -25,26 +25,21 @@ function fixString($string) {
 function printQuestion($row){
     //for each answer, the pair of [answer, questionID] is passed into the post array
     echo fixString($row["question"]) . "<br>";
-    echo '<input type="radio" name="question'. $row['quesID']. '" value="['.fixString($row["A"]).', '.$row['quesID'].']">A = ' . fixString($row["A"]) . '<br>';
-    echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["B"]) .', '.$row['quesID'].']">B = ' . fixString($row["B"]) . '<br>';
+    echo '<input type="radio" name="question'. $row['quesID']. '" value="[a, '.$row['quesID'].']">A = ' . fixString($row["A"]) . '<br>';
+    echo '<input type="radio" name="question'. $row['quesID']. '" value="[b, '.$row['quesID'].']">B = ' . fixString($row["B"]) . '<br>';
     if($row["C"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["C"]) .', '.$row['quesID'].']">C = ' . fixString($row["C"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="[c, '.$row['quesID'].']">C = ' . fixString($row["C"]) . '<br>';
     }
     if($row["D"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["D"]) .', '.$row['quesID'].']">D = ' . fixString($row["D"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="[d, '.$row['quesID'].']">D = ' . fixString($row["D"]) . '<br>';
     }
     if($row["E"] != null){
-        echo '<input type="radio" name="question'. $row['quesID']. '" value="['. fixString($row["E"]) .', '.$row['quesID'].']">E = ' . fixString($row["E"]) . '<br>';
+        echo '<input type="radio" name="question'. $row['quesID']. '" value="[e, '.$row['quesID'].']">E = ' . fixString($row["E"]) . '<br>';
     }
-    echo '<br>';    
+    echo '<br>';      
 }
 
-$servername = "localhost";
-$username = "root";
-//your password
-$password = "";
-$database = "seQuiz";
-
+require 'loginInfo.php';
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 /*
@@ -54,61 +49,18 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully<br>";
 */
-
-//each index corresponds with a chapter and each value corresponds with the number of questions
-$questions=$_POST['questions'];
-
-//this would handle for the saved quizzes passing in the text of 
-//CHANGE THIS TO GET FROM THE POST ARRAY TO CONNECT TO THE SAVEDQUIZZES PAGE
-$savedQuestionsText = '';
-if(($savedQuestionsText == null or $savedQuestionsText == '')){
-    $savedQuestions = null; 
-}
-else{
-    $savedQuestions = explode(', ', $savedQuestionsText);
-}
-
-$chapterQuestionPair = array(); 
-//create pairs of chapters and amount of questions
-for($it = 0; $it < 10; $it++){
-	if($questions[$it] > 0){
-        array_push($chapterQuestionPair, array(($it+1), $questions[$it]));
-	}
-}
-
-/*
-debugging the chapter-question pairs
-for($i = 0; $i < count($chapterQuestionPair); $i++){
-    for($j = 0; $j < count($chapterQuestionPair[$i]); $j++){
-        if($j == 0) echo 'Chapter = ';
-        else echo 'Number Of Questions = ';
-        echo $chapterQuestionPair[$i][$j] . "<br>";
-    }
-}
-*/
-//selects every question and answer
-//select question, Answer1.answer as A,Answer2.answer as B,Answer3.answer as C, Answer4.answer as D, Answer5.answer as E from Questions, Answer1, Answer2,Answer3,Answer4,Answer5 where Questions.questionID = Answer1.questionID and Questions.questionID = Answer2.questionID and Questions.questionID = Answer3.questionID and Questions.questionID = Answer4.questionID and Questions.questionID = Answer5.questionID;
 echo '<form action="results.php" method="post">';
-if($savedQuestions){
-    $questionAnswerQuery = "select Questions.questionID as quesID, chapter, question, Answer1.answer as A,Answer2.answer as B,Answer3.answer as C, Answer4.answer as D, Answer5.answer as E from Questions, Answer1, Answer2,Answer3,Answer4,Answer5 where Questions.questionID = Answer1.questionID and Questions.questionID = Answer2.questionID and Questions.questionID = Answer3.questionID and Questions.questionID = Answer4.questionID and Questions.questionID = Answer5.questionID and (";
-    //loop through the array adding the questionIDs to the query
-    for($x = 0; $x < count($savedQuestions); $x++){
-        //if it is the last element of the array end the query
-        if($x == (count($savedQuestions)) - 1){
-            $questionAnswerQuery = $questionAnswerQuery . " Questions.questionID = " . $savedQuestions[$x] . ")"; 
-        }
-        else{
-            $questionAnswerQuery = $questionAnswerQuery . " Questions.questionID = " . $savedQuestions[$x] . " or";
-        }
-    }
-    $results = $conn->query($questionAnswerQuery);
-    if($results->num_rows > 0){
-        while($row = $results->fetch_assoc()){
-            printQuestion($row);
+
+//this checks if the input is from the index.html page
+if(isset($_POST['questions'])){
+    $questions=$_POST['questions'];
+    $chapterQuestionPair = array(); 
+//create pairs of chapters and amount of questions
+    for($it = 0; $it < 10; $it++){
+        if($questions[$it] > 0){
+            array_push($chapterQuestionPair, array(($it+1), $questions[$it]));
         }
     }
-}
-else{
     $questionIdArray = array();
     //Make each query and send it off to find the results
     for($i = 0; $i < count($chapterQuestionPair); $i++){
@@ -153,6 +105,35 @@ else{
         $results = $conn->query($savedQuizzesQuery);
     }
 }
+
+
+//this checks if the input came from SavedQuizzes.php
+if(isset($_POST['savedQuestions'])){
+    $savedQuestions = explode(', ', $_POST['savedQuestions']);
+    $questionAnswerQuery = "select Questions.questionID as quesID, chapter, question, Answer1.answer as A,Answer2.answer as B,Answer3.answer as C, Answer4.answer as D, Answer5.answer as E from Questions, Answer1, Answer2,Answer3,Answer4,Answer5 where Questions.questionID = Answer1.questionID and Questions.questionID = Answer2.questionID and Questions.questionID = Answer3.questionID and Questions.questionID = Answer4.questionID and Questions.questionID = Answer5.questionID and (";
+    //loop through the array adding the questionIDs to the query
+    for($x = 0; $x < count($savedQuestions); $x++){
+        //if it is the last element of the array end the query
+        if($x == (count($savedQuestions)) - 1){
+            $questionAnswerQuery = $questionAnswerQuery . " Questions.questionID = " . $savedQuestions[$x] . ")"; 
+        }
+        else{
+            $questionAnswerQuery = $questionAnswerQuery . " Questions.questionID = " . $savedQuestions[$x] . " or";
+        }
+    }
+    //echo $questionAnswerQuery;
+    $results = $conn->query($questionAnswerQuery);
+    if($results->num_rows > 0){
+        while($row = $results->fetch_assoc()){
+            printQuestion($row);
+        }
+    }
+
+}
+
+//selects every question and answer
+//select question, Answer1.answer as A,Answer2.answer as B,Answer3.answer as C, Answer4.answer as D, Answer5.answer as E from Questions, Answer1, Answer2,Answer3,Answer4,Answer5 where Questions.questionID = Answer1.questionID and Questions.questionID = Answer2.questionID and Questions.questionID = Answer3.questionID and Questions.questionID = Answer4.questionID and Questions.questionID = Answer5.questionID;
+
 echo 
 "
 	<button type=\"submit\" class=\"btn btn-primary\" id=\"submit\">Submit</button>

@@ -30,11 +30,7 @@ function fixString($string) {
     return preg_replace('/[^\x00-\x7f]/', '\'', $string);
 }
 
-$servername = "localhost";
-$username = "root";
-//your password
-$password = "qmpz1234zmmz4321";
-$database = "sequiz";
+require 'loginInfo.php';
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
@@ -49,27 +45,28 @@ foreach($_POST as $index => $array) {
         $array = fixArray($array);
 
         // select question asked to user
-        $getQuestion = "select question from questions where questionID=$array[1]";
+        $getQuestion = "select question from Questions where questionID=".$array[1];
 
         // select answer that user entered from Answer1-Answer5
         if ($array[0] == 'a') {
-          $getUserAnswer = "select answer from answer1 where questionID=$array[1]";
+          $getUserAnswer = "select answer from Answer1 where questionID=$array[1]";
         }
         else if ($array[0] == 'b') {
-          $getUserAnswer = "select answer from answer2 where questionID=$array[1]";
+          $getUserAnswer = "select answer from Answer2 where questionID=$array[1]";
         }
         else if ($array[0] == 'c') {
-          $getUserAnswer = "select answer from answer3 where questionID=$array[1]";
+          $getUserAnswer = "select answer from Answer3 where questionID=$array[1]";
         }
         else if ($array[0] == 'd') {
-          $getUserAnswer = "select answer from answer4 where questionID=$array[1]";
+          $getUserAnswer = "select answer from Answer4 where questionID=$array[1]";
         }
         else if ($array[0] == 'e') {
-          $getUserAnswer = "select answer from answer5 where questionID=$array[1]";
+          $getUserAnswer = "select answer from Answer5 where questionID=$array[1]";
         }
 
         // Convert questions query to array
-        $questionResult = $conn->query($getQuestion);
+        $questionResult = $conn->query($getQuestion) or die($conn->error);
+        
         $questionArray = $questionResult->fetch_assoc();
 
         // Display questions that were asked
@@ -86,11 +83,11 @@ foreach($_POST as $index => $array) {
         echo $userAnswerArray["answer"] . ") <br>";
 
         // select the correct answer of the question
-        $getCorrectAnswer1 = "select answer from answer1 where questionID=$array[1] and correct='y'";
-        $getCorrectAnswer2 = "select answer from answer2 where questionID=$array[1] and correct='y'";
-        $getCorrectAnswer3 = "select answer from answer3 where questionID=$array[1] and correct='y'";
-        $getCorrectAnswer4 = "select answer from answer4 where questionID=$array[1] and correct='y'";
-        $getCorrectAnswer5 = "select answer from answer5 where questionID=$array[1] and correct='y'";
+        $getCorrectAnswer1 = "select answer from Answer1 where questionID=$array[1] and correct='y'";
+        $getCorrectAnswer2 = "select answer from Answer2 where questionID=$array[1] and correct='y'";
+        $getCorrectAnswer3 = "select answer from Answer3 where questionID=$array[1] and correct='y'";
+        $getCorrectAnswer4 = "select answer from Answer4 where questionID=$array[1] and correct='y'";
+        $getCorrectAnswer5 = "select answer from Answer5 where questionID=$array[1] and correct='y'";
 
         // Display correct answer beginning message
         echo "* correct answer: ";
