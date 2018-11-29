@@ -1,0 +1,15 @@
+create table SavedQuizzes(
+quizID int AUTO_INCREMENT,
+questions TEXT,
+chapters TEXT,
+PRIMARY KEY (quizID)
+);
+
+DONT PASTE THIS
+--- To insert into the table just use 
+--- INSERT INTO SavedQuizzes(questions, chapters) 
+--- VALUES ('questionIDs with spaces separating them', 'chapters separated by commas')
+
+--- EXAMPLE
+--- INSERT INTO SavedQuizzes(questions, chapters)
+--- VALUES ('1 4 7 81 107', '3,0,0,0,0,0,0,1,0,1');

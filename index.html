@@ -1,17 +1,249 @@
- <!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Page Title</title>
-<link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+  <head>
+  
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	
+		<!-- Bootstrap external CSS -->
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/popup.css">
+		<title>Quiz Generator</title>
+	</head>
+	<body onload = "checkform()">
+		<div class="container">
+  			<h2>Generate A Quiz</h2>
+  			<p>Select how many questions from each chapter you would like to take a quiz on. Press the generate quiz button to begin.</p>
+  			
+  			<form action="php/generateQuiz.php" name=questionGroup onclick="checkform()" method="post">
+  				<label>Chapter 1: </label>
+      			<select name="questions[]" id="chapter1Group">
+        			<option value="0">0</option>
+       				<option value="1">1</option>
+        			<option value="2">2</option>
+        			<option value="3">3</option>
+        			<option value="4">4</option>
+        			<option value="5">5</option>
+        			<option value="6">6</option>
+      			</select>
+				
+				<br>
+				
+  				<label>Chapter 2: </label>
+      			<select name="questions[]" id="chapter2Group">
+        			<option value="0">0</option>
+       				<option value="1">1</option>
+        			<option value="2">2</option>
+        			<option value="3">3</option>
+        			<option value="4">4</option>
+        			<option value="5">5</option>
+        			<option value="6">6</option>
+        			<option value="7">7</option>
+       				<option value="8">8</option>
+      			</select>
+				
+				<br>
+				
+  				<label>Chapter 3: </label>
+      			<select name="questions[]" id="chapter3Group">
+        			<option value="0">0</option>
+       				<option value="1">1</option>
+        			<option value="2">2</option>
+        			<option value="3">3</option>
+        			<option value="4">4</option>
+        			<option value="5">5</option>
+       			</select>
+				
+				<br>
+				
+  				<label>Chapter 4: </label>
+      			<select name="questions[]" id="chapter4Group">
+        			<option value="0">0</option>
+       				<option value="1">1</option>
+        			<option value="2">2</option>
+        			<option value="3">3</option>
+        			<option value="4">4</option>
+        			<option value="5">5</option>
+        			<option value="6">6</option>
+        			<option value="7">7</option>
+       				<option value="8">8</option>
+        			<option value="9">9</option>
+        			<option value="10">10</option>
+        			<option value="11">11</option>
+        			<option value="12">12</option>
+        			<option value="13">13</option>
+       			</select>
+				
+   				<br>
+				
+  				<label>Chapter 5: </label>
+      			<select name="questions[]" id="chapter5Group">
+        			<option value="0">0</option>
+       				<option value="1">1</option>
+        			<option value="2">2</option>
+        			<option value="3">3</option>
+        			<option value="4">4</option>
+        			<option value="5">5</option>
+        			<option value="6">6</option>
+        			<option value="7">7</option>
+       				<option value="8">8</option>
+        			<option value="9">9</option>
+        			<option value="10">10</option>
+        			<option value="11">11</option>
+       			</select>
+				
+				<br>
+				
+  				<label>Chapter 6: </label>
+      			<select name="questions[]" id="chapter6Group">
+        			<option value="0">0</option>
+       				<option value="1">1</option>
+        			<option value="2">2</option>
+        			<option value="3">3</option>
+        			<option value="4">4</option>
+        			<option value="5">5</option>
+        			<option value="6">6</option>
+        			<option value="7">7</option>
+       				<option value="8">8</option>
+        			<option value="9">9</option>
+        			<option value="10">10</option>
+        			<option value="11">11</option>
+        			<option value="12">12</option>
+       			</select>
+				
+				<br>
+				
+  				<label>Chapter 7: </label>
+      			<select name="questions[]" id="chapter7Group">
+        			<option value="0">0</option>
+       				<option value="1">1</option>
+        			<option value="2">2</option>
+        			<option value="3">3</option>
+        			<option value="4">4</option>
+        			<option value="5">5</option>
+        			<option value="6">6</option>
+        			<option value="7">7</option>
+       				<option value="8">8</option>
+        			<option value="9">9</option>
+        			<option value="10">10</option>
+        			<option value="11">11</option>
+        			<option value="12">12</option>
+        			<option value="13">13</option>
+       			</select>
+				
+				<br>
+				
+  				<label>Chapter 8: </label>
+      			<select name="questions[]" id="chapter8Group">
+        			<option value="0">0</option>
+       				<option value="1">1</option>
+        			<option value="2">2</option>
+        			<option value="3">3</option>
+        			<option value="4">4</option>
+        			<option value="5">5</option>
+        			<option value="6">6</option>
+        			<option value="7">7</option>
+       				<option value="8">8</option>
+        			<option value="9">9</option>
+        			<option value="10">10</option>
+        			<option value="11">11</option>
+        			<option value="12">12</option>
+        			<option value="13">13</option>
+        			<option value="14">14</option>
+       				<option value="15">15</option>
+        			<option value="16">16</option>
+        			<option value="17">17</option>
+        			<option value="18">18</option>
+        			<option value="19">19</option>
+      			</select>
+	
+				<br>
 
-<h1>This is a Heading</h1>
-<p id="text">This is a paragraph.</p>
-<button id='button'>Click me</button>
+  				<label>Chapter 9: </label>
+      			<select name="questions[]" id="chapter9Group">
+        			<option value="0">0</option>
+       				<option value="1">1</option>
+        			<option value="2">2</option>
+        			<option value="3">3</option>
+        			<option value="4">4</option>
+        			<option value="5">5</option>
+        			<option value="6">6</option>
+        			<option value="7">7</option>
+       				<option value="8">8</option>
+        			<option value="9">9</option>
+        			<option value="10">10</option>
+      			</select>
+				
+				<br>
+				
+  				<label>Chapter 10: </label>
+      			<select name="questions[]" id="chapter10Group">
+        			<option value="0">0</option>
+       				<option value="1">1</option>
+        			<option value="2">2</option>
+        			<option value="3">3</option>
+        			<option value="4">4</option>
+        			<option value="5">5</option>
+        			<option value="6">6</option>
+        			<option value="7">7</option>
+       				<option value="8">8</option>
+        			<option value="9">9</option>
+      			</select>
+      			
+      			<br>
+      			<br>
+				
+      			<div class="popup">
+					<span class="popuptext" id="myPopup">Select at least one question before beginning</span>
+					<button type="submit" class="btn btn-primary" id ="generateQuizButton" onmouseover="showPopup()" onmouseleave="showPopup()">Generate Quiz</button>
+      			</div>
+				
+				<a href="php/SavedQuizzes.php" class="btn btn-primary">View Past Quizzes</a>
+				
+      		</form>
+      		  
+  		</div>
+		
+		<script>
+		var cansubmit;
+		
+		function checkform()
+		{
+			cansubmit = false;
+			
+			var f = document.forms["questionGroup"].elements;
+			
 
+			for (var i = 0; i < 10; i++)
+			{
+				if (f[i].value > 0) 
+				{
+					cansubmit = true;
+					break;
+				}
+			}
 
-<script src="js/scripts.js"></script>
-</body>
-</html> 
+			if (cansubmit) 
+			{
+				document.getElementById('generateQuizButton').disabled = false;
+			}
+			else
+			{
+				document.getElementById('generateQuizButton').disabled = 'disabled';
+			}
+		}
+		
+		// When a user hovers over the div, shows the popup
+		function showPopup() {
+			if (cansubmit == false)
+			{
+				var popup = document.getElementById("myPopup");
+				popup.classList.toggle("show");
+			}
+		}
+
+	</script>
+		
+ 	</body>
+ </html>
