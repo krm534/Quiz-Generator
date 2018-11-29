@@ -15,7 +15,7 @@ echo
   	<br><h2>Quiz Results Page</h2><br>
 ';
 
-error_reporting(E_ALL); ini_set('display_errors', '1');
+//error_reporting(E_ALL); ini_set('display_errors', '1');
 
 //turns the string into in an array
 function fixArray($string){
@@ -70,17 +70,17 @@ foreach($_POST as $index => $array) {
         $questionArray = $questionResult->fetch_assoc();
 
         // Display questions that were asked
-        echo $questionArray["question"] . "<br>";
+        echo fixString($questionArray["question"]) . "<br>";
 
         // Display what letter user chose
-        echo "* you answered: " . $array[0] . " (";
+        echo "* you answered: " . fixString($array[0]) . " (";
 
         // Convert user's answer query to array
         $userAnswerResult = $conn->query($getUserAnswer);
         $userAnswerArray = $userAnswerResult->fetch_assoc();
 
         // Display user's answer
-        echo $userAnswerArray["answer"] . ") <br>";
+        echo fixString($userAnswerArray["answer"]) . ") <br>";
 
         // select the correct answer of the question
         $getCorrectAnswer1 = "select answer from Answer1 where questionID=$array[1] and correct='y'";
@@ -96,7 +96,7 @@ foreach($_POST as $index => $array) {
         $correctAnswerResult1 = $conn->query($getCorrectAnswer1);
         if ($correctAnswerResult1->num_rows > 0) {
           $correctAnswer1 = $correctAnswerResult1->fetch_assoc();
-          echo $correctAnswer1["answer"] . "<br>";
+          echo fixString($correctAnswer1["answer"]) . "<br>";
 
           // compare user input to correct input
           if ($userAnswerArray["answer"] == $correctAnswer1["answer"]) {
@@ -188,7 +188,8 @@ foreach($_POST as $index => $array) {
           }
     }
 }
-
+echo '<span><a href="../index.html" class="btn btn-primary">Home</a>    </span>';
+echo '<a href="SavedQuizzes.php" class="btn btn-primary">View Past Quizzes</a>';
 echo '</div>';
 ?>
 

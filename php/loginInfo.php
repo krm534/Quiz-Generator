@@ -1,7 +1,9 @@
 <?php
   $servername = "localhost";
-  $username = "root";
+  //netid
+  $username = "";
   //your password
-  $password = "Hellias8484";
-  $database = "seQuiz";
+  $password = "";
+  //netid
+  $database = "";
 ?>

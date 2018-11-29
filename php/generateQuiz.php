@@ -8,7 +8,7 @@
 <body onload="checkform()">
 
 <?php
-error_reporting(E_ALL); ini_set('display_errors', '1');
+//error_reporting(E_ALL); ini_set('display_errors', '1');
 echo 
 '
 	<div class="container">
@@ -25,7 +25,7 @@ function fixString($string) {
 function printQuestion($row){
     //for each answer, the pair of [answer, questionID] is passed into the post array
     echo fixString($row["question"]) . "<br>";
-    echo '<input type="radio" name="question'. $row['quesID']. '" value="[a, '.$row['quesID'].']">A = ' . fixString($row["A"]) . '<br>';
+    echo '<input type="radio" name="question'. $row['quesID']. '" value="[a, '.$row['quesID'].']" required>A = ' . fixString($row["A"]) . '<br>';
     echo '<input type="radio" name="question'. $row['quesID']. '" value="[b, '.$row['quesID'].']">B = ' . fixString($row["B"]) . '<br>';
     if($row["C"] != null){
         echo '<input type="radio" name="question'. $row['quesID']. '" value="[c, '.$row['quesID'].']">C = ' . fixString($row["C"]) . '<br>';
